@@ -1,6 +1,6 @@
 from curses.ascii import isalpha
 import requests
-apikey = "B380CFA0-4540-4CE3-B855-2C8C48D3A572"
+from config import apikey
 
 r = requests.get("https://rest.coinapi.io/v1/assets?apikey={}".format(apikey))
 if r.status_code != 200:
