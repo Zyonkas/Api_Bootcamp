@@ -12,6 +12,7 @@ for id in id_list:
         final_list.append(id['asset_id'])
     
 print(len(final_list))
+print(len(id_list))
 crypto = input("Introduce a cryptocurrency: ").upper()
 
 while crypto != "":
