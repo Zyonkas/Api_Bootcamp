@@ -1,4 +1,3 @@
-from curses.ascii import isalpha
 import requests
 from config import apikey
 
@@ -11,7 +10,8 @@ final_list = []
 for id in id_list:
     if id["type_is_crypto"] == 1:
         final_list.append(id['asset_id'])
-
+    
+print(len(final_list))
 crypto = input("Introduce a cryptocurrency: ").upper()
 
 while crypto != "":
