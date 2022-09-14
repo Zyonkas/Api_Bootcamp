@@ -1,20 +1,23 @@
+from cryptoexchange.views import ShowError, ViewChange, pideCrypto
 from cryptoexchange.models import exchange, coin, ModelError
 from config import apikey
 
 todas = coin()
 todas.trae(apikey)
 
-print("{} de {}".format(len(todas.crypto), len(todas.crypto) + len (todas.not_crypto)))
+print("{} de {}".format(len(todas.cryptos), len(todas.cryptos) + len (todas.no_cryptos)))
 
-crypto = input("introduzca una cripto conocida: ").upper()
+crypto = pideCrypto()
+
 while crypto != "" :
     if crypto in todas.cryptos:
         tipoCambio = exchange(crypto)
         try:
             tipoCambio.actualiza(apikey)
+            ViewChange(tipoCambio.tasa)
 
             print("{:.2f} €".format(tipoCambio.tasa))
         except ModelError as variable:
-            print("se ha producido el error {}".format(variable))
+            ShowError(variable)
 
-    crypto = input("introduzca una cripto conocida: ").upper()
+    crypto = pideCrypto()
